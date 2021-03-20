@@ -6,7 +6,9 @@
         <link rel="stylesheet" href="boostrap/bootstrap.css">
         <script src="https://kit.fontawesome.com/e695157fcf.js" crossorigin="anonymous"></script>
         <style>
-
+            *{
+                
+            }
 /*
             @media (max-width: 768px) {
                 .banner{
@@ -28,15 +30,7 @@
                 height: 450px;
                 background-position: center;
                 background-repeat: no-repeat;
-            }
-            .bg1{
                 background-image: url("jpg/banner.jpg");
-            }
-            .bg2{
-                background-image: url("jpg/kierownica.jpeg");
-            }
-            .bg3{
-                background-image: url("jpg/chwytak.jpeg");
             }
             .banner > img{
                 top: 30px;
@@ -55,36 +49,6 @@
             .mainbar > a{
                 
             }
-            .news{
-                width: 70%;
-                float: left;
-                height: 100%;
-            }
-            .news > div{
-                background-color: lightgray;
-                margin-top: 30px;
-            }
-            .news-square > * {
-                padding-top: 20px;
-            }
-            h2{   
-                font-weight: bold;
-            }
-            h4{
-                text-align: center;
-                font-weight: bold;
-                color: darkblue;
-                margin: 0;
-            }
-            .info{
-                width: 30%;
-                float: right;
-                background-repeat: repeat;
-                border-left: black 2px solid;
-            }
-            .info > img{
-                padding-top: 20px;
-            }
             
             .footer{
                 background-image: url(jpg/background-footer.jpg);
@@ -93,14 +57,30 @@
                 width: 100%;
                 height: 100px;
             }
+            .center{
+                display: flex;
+                justify-content: center;
+            }
+            h2{
+                font-weight: bold;
+            }
             .przyciski{
                 display: flex;
                 justify-content: center;
             }
+            .bg1{
+                background-image: url("jpg/banner.jpg");
+            }
+            .bg2{
+                background-image: url("jpg/kierownica.jpeg");
+            }
+            .bg3{
+                background-image: url("jpg/chwytak.jpeg");
+            }
         </style>
     </head>
     <body>
-        <div class="banner container-fluid bg1" id="bnr">
+        <div class="banner container-fluid">
             <img src="jpg/logo.png" alt="logo" class="col-xs-12 col-sm-3 col-md-2">
             <div class="col-xs-12 col-sm-offset-2 col-sm-6 col-md-offset-2 col-md-7 mainbar">
                 <i class="fas fa-ellipsis-v"></i>
@@ -114,49 +94,95 @@
                 <i class="fas fa-ellipsis-v"></i>
             </div>
         </div>
-        <div class=" przyciski col-md-12" > <i class="fas fa-square" id="test1"></i><i class="far fa-square" id="test2"></i><i class="far fa-square" id="test3"></i> </div>
         
+        <div class=" przyciski col-md-12" > <i class="fas fa-square" id="test1"></i><i class="far fa-square" id="test2"></i><i class="far fa-square" id="test3"></i> </div>
         <!-- górny pasek zakładek --> 
         
-        <div class = "news container-fluid">
-            <h2> Aktualności </h2>
-            <div class = "col-md-5 container fluid news-square">
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
-                <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
-            </div>
-            <div class = "col-md-offset-1 col-md-5 container fluid news-square">
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
-                <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
-            </div>
-            <br>
-            <div class = "col-md-5 container fluid news-square">
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
-                <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
-            </div>
-            <div class = "col-md-offset-1 col-md-5 container fluid news-square">
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
-                <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
-            </div>
-        </div>
-    
-        <!-- lewa strona -->
+        <div class = "news container">
+            <h2 class="col-12-md center"> Aktualne przystanki </h2>
+            <img src="jpg/uklad_wspolrzednych.jpg" class="col-md-12 center" alt="plan">
+            <p class="col-md-12 center"> Do przystanków pozamiejskich zachodnich dojeżdża tylko autobus Nowicz zachodni, identycznie z wschodnim, południowym i północnym. </p>
+            <p id="xD"> e </p>
+            
+            <p>Wybierz przystanek początkowy i końcowy by obliczyć odległość pomiędzy powyższymi miejscami.</p>
+
+            <form action="/action_page.php">
+              <label for="przystanek_poczatkowy">Przystanek początkowy:</label>
+              <select name="przystanek_poczatkowy" id="przystanek_poczatkowy">
+                <option value="nowicz_z">Nowicz zachodni</option>
+                <option value="szkolna">Szkolna</option>
+                <option value="spozywcza">Spożywcza</option>
+                <option value="rynek">Rynek</option>
+                <option value="nowicz_pln">Nowicz północny</option>
+                <option value="stadionowa">Stadionowa</option>
+                <option value="nowicz_w">Nowicz wschodni</option>
+                <option value="cmentarna">Cmentarna</option>
+                <option value="nowicz_pld">Nowicz południowy</option>
+                <option value="arakowice">Arakowice</option>
+                <option value="zawada">Zawada</option>
+                <option value="marakow">Maraków</option>
+                <option value="udanow">Udanów</option>
+                <option value="mala_wies">Mała Wieś</option>
+                <option value="duza_wies">Duża Wieś</option>
+                <option value="recka">Recka</option>
+                <option value="kebsice">Kebsice</option>
+                <option value="maflok">Maflok</option>
+              </select>
+            <label for="przystanek_koncowy">Przystanek końcowy:</label>
+              <select name="przystanek_koncowy" id="przystanek_koncowy">
+                <option value="nowicz_z">Nowicz zachodni</option>
+                <option value="szkolna">Szkolna</option>
+                <option value="spozywcza">Spożywcza</option>
+                <option value="rynek">Rynek</option>
+                <option value="nowicz_pln">Nowicz północny</option>
+                <option value="stadionowa">Stadionowa</option>
+                <option value="nowicz_w">Nowicz wschodni</option>
+                <option value="cmentarna">Cmentarna</option>
+                <option value="nowicz_pld">Nowicz południowy</option>
+                <option value="arakowice">Arakowice</option>
+                <option value="zawada">Zawada</option>
+                <option value="marakow">Maraków</option>
+                <option value="udanow">Udanów</option>
+                <option value="mala_wies">Mała Wieś</option>
+                <option value="duza_wies">Duża Wieś</option>
+                <option value="recka">Recka</option>
+                <option value="kebsice">Kebsice</option>
+                <option value="maflok">Maflok</option>
+              </select>
+              <input type="submit" value="Submit">
+            </form>
         
-        <div class = "info container-fluid">
-            <h2> Aktualności </h2>
-            <img src="jpg/stop.jpeg" class="col-md-10" alt="al">
-            <img src="jpg/stop.jpeg" class="col-md-10" alt="al">
-            <img src="jpg/stop.jpeg" class="col-md-10" alt="al">
+        <script>
+            const nowicz_zachodni = [4,7];
+            const szkolna = [6,6];
+            const spozywcza = [7,8];
+            const rynek = [8,7];
+            const nowicz_polnocny = [9,9];
+            const stadionowa = [12,8];
+            const nowicz_wschodni = [14,6];
+            const cmentarna = [10,6];
+            const nowicz_poludniowy = [8,4];
+            
+            const arakowice = [1,3];
+            const zawada = [1,8];
+            const marakow = [5,11];
+            const udanow = [9,12];
+            const mala_wies = [14,11];
+            const duza_wies = [20,9];
+            const recko = [18,3];
+            const kebsice = [14,1];
+            const maflok = [6,0];
+            
+            const nowicz_poludniowy_to_maflok = Math.sqrt(Math.pow((maflok[0] - nowicz_poludniowy[0]),2) + Math.pow((maflok[1] - nowicz_poludniowy[1]),2));
+            
+            document.getElementById("xD").innerHTML = " Odległość wynosi " + nowicz_poludniowy_to_maflok;
+            
+        </script>
         </div>
-        
-        <!-- prawa strona -->
-        
-        <div class="footer container fluid">
-            aa
-        </div>
+        <!-- srodek -->
+    <div class="footer container fluid">
+        aa
+    </div>
         <!-- stopka -->
         <script>
             let test1 = document.getElementById("test1");
@@ -234,6 +260,5 @@
             
             
         </script>
-        
     </body>
 </html>

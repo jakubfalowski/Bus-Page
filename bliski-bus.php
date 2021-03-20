@@ -6,7 +6,9 @@
         <link rel="stylesheet" href="boostrap/bootstrap.css">
         <script src="https://kit.fontawesome.com/e695157fcf.js" crossorigin="anonymous"></script>
         <style>
-
+            *{
+                
+            }
 /*
             @media (max-width: 768px) {
                 .banner{
@@ -28,15 +30,7 @@
                 height: 450px;
                 background-position: center;
                 background-repeat: no-repeat;
-            }
-            .bg1{
                 background-image: url("jpg/banner.jpg");
-            }
-            .bg2{
-                background-image: url("jpg/kierownica.jpeg");
-            }
-            .bg3{
-                background-image: url("jpg/chwytak.jpeg");
             }
             .banner > img{
                 top: 30px;
@@ -55,36 +49,6 @@
             .mainbar > a{
                 
             }
-            .news{
-                width: 70%;
-                float: left;
-                height: 100%;
-            }
-            .news > div{
-                background-color: lightgray;
-                margin-top: 30px;
-            }
-            .news-square > * {
-                padding-top: 20px;
-            }
-            h2{   
-                font-weight: bold;
-            }
-            h4{
-                text-align: center;
-                font-weight: bold;
-                color: darkblue;
-                margin: 0;
-            }
-            .info{
-                width: 30%;
-                float: right;
-                background-repeat: repeat;
-                border-left: black 2px solid;
-            }
-            .info > img{
-                padding-top: 20px;
-            }
             
             .footer{
                 background-image: url(jpg/background-footer.jpg);
@@ -93,14 +57,30 @@
                 width: 100%;
                 height: 100px;
             }
+            .center{
+                display: flex;
+                justify-content: center;
+            }
+            h2{
+                font-weight: bold;
+            }
             .przyciski{
                 display: flex;
                 justify-content: center;
             }
+            .bg1{
+                background-image: url("jpg/banner.jpg");
+            }
+            .bg2{
+                background-image: url("jpg/kierownica.jpeg");
+            }
+            .bg3{
+                background-image: url("jpg/chwytak.jpeg");
+            }
         </style>
     </head>
     <body>
-        <div class="banner container-fluid bg1" id="bnr">
+        <div class="banner container-fluid">
             <img src="jpg/logo.png" alt="logo" class="col-xs-12 col-sm-3 col-md-2">
             <div class="col-xs-12 col-sm-offset-2 col-sm-6 col-md-offset-2 col-md-7 mainbar">
                 <i class="fas fa-ellipsis-v"></i>
@@ -114,46 +94,27 @@
                 <i class="fas fa-ellipsis-v"></i>
             </div>
         </div>
+        
         <div class=" przyciski col-md-12" > <i class="fas fa-square" id="test1"></i><i class="far fa-square" id="test2"></i><i class="far fa-square" id="test3"></i> </div>
         
         <!-- górny pasek zakładek --> 
         
-        <div class = "news container-fluid">
-            <h2> Aktualności </h2>
-            <div class = "col-md-5 container fluid news-square">
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
-                <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+        <div class = "news container">
+            <h2 class="col-12-md center"> Bliski bus </h2>
+            <?php
+
+            $data=date("Y-m-d");
+            $czas=date("H:i");
+
+            echo "Stronę wyświetlono dnia $data o godzinie $czas";
+
+            ?>
+            
             </div>
-            <div class = "col-md-offset-1 col-md-5 container fluid news-square">
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
-                <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
-            </div>
-            <br>
-            <div class = "col-md-5 container fluid news-square">
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
-                <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
-            </div>
-            <div class = "col-md-offset-1 col-md-5 container fluid news-square">
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
-                <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
-            </div>
-        </div>
-    
-        <!-- lewa strona -->
+
         
-        <div class = "info container-fluid">
-            <h2> Aktualności </h2>
-            <img src="jpg/stop.jpeg" class="col-md-10" alt="al">
-            <img src="jpg/stop.jpeg" class="col-md-10" alt="al">
-            <img src="jpg/stop.jpeg" class="col-md-10" alt="al">
-        </div>
         
-        <!-- prawa strona -->
-        
+        <!-- srodek -->
         <div class="footer container fluid">
             aa
         </div>
@@ -234,6 +195,5 @@
             
             
         </script>
-        
     </body>
 </html>
