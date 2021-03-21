@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title> Informator o rozkładzie autobusów </title>
         <link rel="stylesheet" href="boostrap/bootstrap.css">
+        <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/e695157fcf.js" crossorigin="anonymous"></script>
         <style>
 
@@ -21,100 +22,39 @@
                     }
             }
 */
-            body{
-                background-image: url("jpg/background.jpg");
-            }
-            .banner{
-                height: 450px;
-                background-position: center;
-                background-repeat: no-repeat;
-            }
-            .bg1{
-                background-image: url("jpg/banner.jpg");
-            }
-            .bg2{
-                background-image: url("jpg/kierownica.jpeg");
-            }
-            .bg3{
-                background-image: url("jpg/chwytak.jpeg");
-            }
-            .banner > img{
-                top: 30px;
-                height: 15%
-            }
-            .mainbar{
-                background-color: aliceblue;
-                border-radius: 10%;
-                height: 15%;
-                padding: 0;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                top: 30px;
-            }
-            .mainbar > a{
-                
-            }
-            .news{
+            
+          .news{
                 width: 70%;
                 float: left;
                 height: 100%;
-            }
+            } 
             .news > div{
                 background-color: lightgray;
                 margin-top: 30px;
-            }
+            } 
+
             .news-square > * {
                 padding-top: 20px;
             }
-            h2{   
-                font-weight: bold;
-            }
-            h4{
-                text-align: center;
-                font-weight: bold;
-                color: darkblue;
-                margin: 0;
-            }
+            
+            
             .info{
                 width: 30%;
                 float: right;
                 background-repeat: repeat;
                 border-left: black 2px solid;
             }
+            
             .info > img{
                 padding-top: 20px;
             }
             
-            .footer{
-                background-image: url(jpg/background-footer.jpg);
-                color: white;
-                clear: both;
-                width: 100%;
-                height: 100px;
-            }
-            .przyciski{
-                display: flex;
-                justify-content: center;
-            }
+
+            
         </style>
     </head>
     <body>
-        <div class="banner container-fluid bg1" id="bnr">
-            <img src="jpg/logo.png" alt="logo" class="col-xs-12 col-sm-3 col-md-2">
-            <div class="col-xs-12 col-sm-offset-2 col-sm-6 col-md-offset-2 col-md-7 mainbar">
-                <i class="fas fa-ellipsis-v"></i>
-                <a href="index.html"> Strona główna </a>
-                <i class="fas fa-ellipsis-v"></i>
-                <a href="rozklad.html"> Rozkład jazdy busów </a>
-                <i class="fas fa-ellipsis-v"></i>
-                <a href="bliski-bus.php"> Najbliższy bus </a>
-                <i class="fas fa-ellipsis-v"></i>
-                <a href="ceny.html"> Ceny </a>
-                <i class="fas fa-ellipsis-v"></i>
-            </div>
-        </div>
-        <div class=" przyciski col-md-12" > <i class="fas fa-square" id="test1"></i><i class="far fa-square" id="test2"></i><i class="far fa-square" id="test3"></i> </div>
+        <?php include "./mainbar.html" ?>
         
         <!-- górny pasek zakładek --> 
         
@@ -136,6 +76,7 @@
                 <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
                 <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
             </div>
+
             <div class = "col-md-offset-1 col-md-5 container fluid news-square">
                 <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
                 <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
@@ -152,12 +93,12 @@
             <img src="jpg/stop.jpeg" class="col-md-10" alt="al">
         </div>
         
-        <!-- prawa strona -->
+        <div class="visits container-fluid"> <?php include "./licznik_odwiedzin.php" ?> </div>
         
-        <div class="footer container fluid">
-            aa
-        </div>
-        <!-- stopka -->
+        <!-- prawa strona -->
+
+        <?php include "./footer.html" ?>
+        
         <script>
             let test1 = document.getElementById("test1");
             let test2 = document.getElementById("test2");

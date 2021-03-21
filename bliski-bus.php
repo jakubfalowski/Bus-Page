@@ -4,98 +4,11 @@
         <meta charset="utf-8">
         <title> Informator o rozkładzie autobusów </title>
         <link rel="stylesheet" href="boostrap/bootstrap.css">
+        <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/e695157fcf.js" crossorigin="anonymous"></script>
-        <style>
-            *{
-                
-            }
-/*
-            @media (max-width: 768px) {
-                .banner{
-                    height: 200px;
-                    }
-                .banner > img{
-                    top: 10px;
-                    height: 100px;
-                    }
-                .banner > img.col-xs-12{
-                    display: none;
-                    }
-            }
-*/
-            body{
-                background-image: url("jpg/background.jpg");
-            }
-            .banner{
-                height: 450px;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-image: url("jpg/banner.jpg");
-            }
-            .banner > img{
-                top: 30px;
-                height: 15%
-            }
-            .mainbar{
-                background-color: aliceblue;
-                border-radius: 10%;
-                height: 15%;
-                padding: 0;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                top: 30px;
-            }
-            .mainbar > a{
-                
-            }
-            
-            .footer{
-                background-image: url(jpg/background-footer.jpg);
-                color: white;
-                clear: both;
-                width: 100%;
-                height: 100px;
-            }
-            .center{
-                display: flex;
-                justify-content: center;
-            }
-            h2{
-                font-weight: bold;
-            }
-            .przyciski{
-                display: flex;
-                justify-content: center;
-            }
-            .bg1{
-                background-image: url("jpg/banner.jpg");
-            }
-            .bg2{
-                background-image: url("jpg/kierownica.jpeg");
-            }
-            .bg3{
-                background-image: url("jpg/chwytak.jpeg");
-            }
-        </style>
     </head>
     <body>
-        <div class="banner container-fluid">
-            <img src="jpg/logo.png" alt="logo" class="col-xs-12 col-sm-3 col-md-2">
-            <div class="col-xs-12 col-sm-offset-2 col-sm-6 col-md-offset-2 col-md-7 mainbar">
-                <i class="fas fa-ellipsis-v"></i>
-                <a href="index.html"> Strona główna </a>
-                <i class="fas fa-ellipsis-v"></i>
-                <a href="rozklad.html"> Rozkład jazdy busów </a>
-                <i class="fas fa-ellipsis-v"></i>
-                <a href="bliski-bus.php"> Najbliższy bus </a>
-                <i class="fas fa-ellipsis-v"></i>
-                <a href="ceny.html"> Ceny </a>
-                <i class="fas fa-ellipsis-v"></i>
-            </div>
-        </div>
-        
-        <div class=" przyciski col-md-12" > <i class="fas fa-square" id="test1"></i><i class="far fa-square" id="test2"></i><i class="far fa-square" id="test3"></i> </div>
+        <?php include "./mainbar.html" ?>
         
         <!-- górny pasek zakładek --> 
         
@@ -115,9 +28,8 @@
         
         
         <!-- srodek -->
-        <div class="footer container fluid">
-            aa
-        </div>
+        <div class="visits container-fluid"> <?php include "./licznik_odwiedzin.php" ?> </div>
+        <?php include "./footer.html" ?>
         <!-- stopka -->
         <script>
             let test1 = document.getElementById("test1");
