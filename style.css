@@ -5,6 +5,7 @@ body{
     height: 450px;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
 }
 .bg1{
     background-image: url("jpg/banner.jpg");
@@ -55,8 +56,8 @@ h4{
     justify-content: center;
 }
 .center{
-            display: flex;
-            justify-content: center;
+        display: flex;
+        justify-content: center;
         }
 img:hover{
     transform: scale(1.02);

@@ -1,0 +1,33 @@
+rozkład autobusu
+
+1 aktualnosci
+id_aktualnosci
+tytuł
+obraz
+krotki_opis
+dlugi_opis
+
+2 przystanek 
+id_przystanku
+nazwa
+współrzędna X
+współrzędna Y
+rodzaj(miejski,pozamiejski)
+
+3 kurs
+id_kursu
+numer_autobusu
+godzina
+przystanek_poczatkowy(id_przystanku)
+przystanek_koncowy(id_przystanku)
+rodzaj(miejski,pozamiejski)
+
+4 bilet
+id_biletu
+godzina zakupu
+rodzaj(rodzaj kurs)
+przystanek_poczatkowy(kurs)
+przystanek_koncowy(kurs)
+cena
+
+https://dbdiagram.io/d/605733fbecb54e10c33c7854

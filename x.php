@@ -14,14 +14,7 @@
         
         <div class = "news container">
             <h2 class="col-12-md center"> Bliski bus </h2>
-            <?php
-
-            $data=date("Y-m-d");
-            $czas=date("H:i");
-
-            echo "Stronę wyświetlono dnia $data o godzinie $czas";
-
-            ?>
+            
             
             </div>
 

@@ -1,3 +1,0 @@
-<div class="footer container fluid">
- Kontakt
-</div>

@@ -60,26 +60,26 @@
         
         <div class = "news container-fluid">
             <h2> Aktualności </h2>
-            <div class = "col-md-5 container fluid news-square">
+            <div class = "col-md-5 col-sm-offset-1 col-sm-10 col-xs-12 container fluid news-square">
                 <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
+                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12 col-xs-12">
                 <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
             </div>
-            <div class = "col-md-offset-1 col-md-5 container fluid news-square">
+            <div class = "col-md-offset-1 col-md-5 col-sm-offset-1 col-sm-10 col-xs-12 container fluid news-square">
                 <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
+                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12 col-xs-12">
                 <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
             </div>
             <br>
-            <div class = "col-md-5 container fluid news-square">
+            <div class = "col-md-5 col-sm-offset-1 col-sm-10 col-xs-12 container fluid news-square">
                 <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
+                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12 col-xs-12">
                 <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
             </div>
 
-            <div class = "col-md-offset-1 col-md-5 container fluid news-square">
+            <div class = "col-md-offset-1 col-md-5 col-sm-offset-1 col-sm-10 col-xs-12 container fluid news-square">
                 <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12">
+                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12 col-xs-12">
                 <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
             </div>
         </div>
@@ -88,93 +88,20 @@
         
         <div class = "info container-fluid">
             <h2> Aktualności </h2>
-            <img src="jpg/stop.jpeg" class="col-md-10" alt="al">
-            <img src="jpg/stop.jpeg" class="col-md-10" alt="al">
-            <img src="jpg/stop.jpeg" class="col-md-10" alt="al">
+            <img src="jpg/stop.jpeg" class="col-md-10 col-xs-12" alt="al">
+            <img src="jpg/stop.jpeg" class="col-md-10 col-xs-12" alt="al">
+            <img src="jpg/stop.jpeg" class="col-md-10 col-xs-12" alt="al">
         </div>
         
         <div class="visits container-fluid"> <?php include "./licznik_odwiedzin.php" ?> </div>
         
         <!-- prawa strona -->
 
-        <?php include "./footer.html" ?>
+       <div class="footer container-fluid">
+ Kontakt xD
+</div>
         
-        <script>
-            let test1 = document.getElementById("test1");
-            let test2 = document.getElementById("test2");
-            let test3 = document.getElementById("test3");
-            
-            let bn = document.getElementById("bnr");
-            
-            function bg1(){
-                test1.classList.add('fas');
-                test1.classList.remove('far');
-                test2.classList.remove('fas');
-                test2.classList.add('far');
-                test3.classList.remove('fas');
-                test3.classList.add('far');
-                bn.classList.add('bg1');
-                bn.classList.remove('bg2');
-                bn.classList.remove('bg3');
-            }
-            
-            function bg2(){
-                test2.classList.add('fas');
-                test2.classList.remove('far');
-                test1.classList.remove('fas');
-                test1.classList.add('far');
-                test3.classList.remove('fas');
-                test3.classList.add('far');
-                bn.classList.add('bg2');
-                bn.classList.remove('bg1');
-                bn.classList.remove('bg3');
-            }
-            
-            function bg3(){
-                test3.classList.add('fas');
-                test3.classList.remove('far');
-                test1.classList.remove('fas');
-                test1.classList.add('far');
-                test2.classList.remove('fas');
-                test2.classList.add('far');
-                bn.classList.add('bg3');
-                bn.classList.remove('bg1');
-                bn.classList.remove('bg2');
-            }
-            
-            test1.addEventListener('click', event => {
-                bg1();
-            });
-            
-            test2.addEventListener('click', event => {
-                bg2();
-            });
-            
-            test3.addEventListener('click', event => {
-                bg3();
-            });
-            
-            setTimeout(bg2inf,5000);
-            setTimeout(bg3inf,10000);
-            setTimeout(bg1inf,15000);
-            
-            function bg1inf(){
-                bg1();
-               setInterval(bg1,15000); 
-            }
-            
-            function bg2inf(){
-                bg2();
-               setInterval(bg2,15000); 
-            }
-            
-            function bg3inf(){
-                bg3();
-                setInterval(bg3,15000);
-            }
-            
-            
-        </script>
+        <script src="ruchbanera.js"></script>
         
     </body>
 </html>
