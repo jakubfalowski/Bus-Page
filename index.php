@@ -7,21 +7,6 @@
         <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/e695157fcf.js" crossorigin="anonymous"></script>
         <style>
-
-/*
-            @media (max-width: 768px) {
-                .banner{
-                    height: 200px;
-                    }
-                .banner > img{
-                    top: 10px;
-                    height: 100px;
-                    }
-                .banner > img.col-xs-12{
-                    display: none;
-                    }
-            }
-*/
             
           .news{
                 width: 70%;
@@ -42,13 +27,23 @@
                 width: 30%;
                 float: right;
                 background-repeat: repeat;
-                border-left: black 2px solid;
             }
             
             .info > img{
                 padding-top: 20px;
             }
             
+            @media (max-width: 991px) {
+                .news{
+                    width: 100%;
+                    text-align: center;
+                }
+                .info{
+                    width: 100%;
+                    padding: 10%;
+                    text-align: center;
+                }
+            }
 
             
         </style>
@@ -93,15 +88,12 @@
             <img src="jpg/stop.jpeg" class="col-md-10 col-xs-12" alt="al">
         </div>
         
-        <div class="visits container-fluid"> <?php include "./licznik_odwiedzin.php" ?> </div>
+        <div class="container-fluid visits"> <?php include "./licznik_odwiedzin.php" ?> </div>
         
         <!-- prawa strona -->
 
-       <div class="footer container-fluid">
- Kontakt xD
-</div>
+       <?php include "./footer.html" ?>
         
         <script src="ruchbanera.js"></script>
-        
     </body>
 </html>

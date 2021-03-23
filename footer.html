@@ -1,4 +1,50 @@
 
-<div class="footer container-fluid">
- Kontakt
+<style>
+    .footer{
+        background-image: url(jpg/background-footer.jpg);
+        color: white;
+        clear: both;
+        width: 100%;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+    @media (max-width: 991px) {
+        .footer{
+            height: 300px;
+        }
+        .footer > *{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+</style>
+<div class = "footer container-fluid">
+    <div class = "col-md-10 col-xs-12 col-sm-12"> 
+        <div class = "col-md-3">
+            <img src="jpg/logo.png" alt="logo"></img>
+        </div>
+        <div class = "col-md-3">
+            <p> Miejskie Przedsiębiorstwo Komunikacyjne <br> Sp. z o.o. w Starym Nowiczu </p>
+            <p> 77-747 Stary Nowicz <br> ul. Rynek 99 </p>
+        </div>
+        <div class="col-md-3" id="timer"> </div>
+            <script>
+            var myVar = setInterval(myTimer, 1000);
+            function myTimer() {
+              var d = new Date();
+              document.getElementById("timer").innerHTML = "©2021 <br> Jakub FAŁOWSKI <br><br>" + d.toLocaleTimeString();
+            }
+            </script>
+        <div class = "col-md-3">
+            <i class="fab fa-facebook"> Stary_Nowicz_MPK </i><br>
+            <i class="fab fa-instagram"> MPK_Stary_Nowicz </i><br>
+            <i class="fas fa-envelope"> starynowicz@mpk.com </i><br>
+            <i class="fas fa-phone"> 123456789 </i>
+        </div>
+    </div>
 </div>
