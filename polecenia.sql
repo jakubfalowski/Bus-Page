@@ -1,0 +1,20 @@
+INSERT INTO `aktualnosci`( `tytuł`, `obraz`, `krotki_opis`, `dlugi_opis`, `poczatek_aktualnosci`, `koniec_aktualnosci`) VALUES ('Kursy chwilowo zawieszone',LOAD_FILE('C:/xampp/htdocs/jpg/srodek.jpeg'),'Przepraszamy za zaistniałą sytuacje','Postaramy się to jak najszybciej naprawić','2021-05-05','2021-05-09');
+
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Nowicz Zachodni',4,7);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Szkolna',6,6);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Spożywcza',7,8);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Rynek',8,7);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Nowicz Północny',9,9);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Stadionowa',12,8);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Nowicz Wschodni',14,6);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Cmentarna',10,6);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Nowicz Południowy',8,4);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Arakowice',1,3);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Zawada',1,8);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Maraków',5,11);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Udanów',9,12);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Mała Wieś',14,11);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Duża Wieś',20,9);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Recko',18,3);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Kebsice',14,1);
+INSERT INTO `przystanek`( `nazwa`, `X`, `Y`) VALUES ('Maflok',6,0);

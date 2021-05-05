@@ -9,7 +9,7 @@
         <style>
             
           .news{
-                width: 70%;
+                width: 65%;
                 float: left;
                 height: 100%;
             } 
@@ -21,15 +21,18 @@
             .news-square > * {
                 padding-top: 20px;
             }
-            
+            .news img{
+                width: 100%;
+            }
             
             .info{
-                width: 30%;
+                width: 25%;
                 float: right;
                 background-repeat: repeat;
             }
             
             .info > img{
+                width: 100%;
                 padding-top: 20px;
             }
             
@@ -49,46 +52,35 @@
         </style>
     </head>
     <body>
-        <?php include "./mainbar.html" ?>
+        <?php include "mainbar.html" ?>
         
         <!-- górny pasek zakładek --> 
-        
-        <div class = "news container-fluid">
-            <h2> Aktualności </h2>
-            <div class = "col-md-5 col-sm-offset-1 col-sm-10 col-xs-12 container fluid news-square">
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12 col-xs-12">
-                <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
-            </div>
-            <div class = "col-md-offset-1 col-md-5 col-sm-offset-1 col-sm-10 col-xs-12 container fluid news-square">
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12 col-xs-12">
-                <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
-            </div>
-            <br>
-            <div class = "col-md-5 col-sm-offset-1 col-sm-10 col-xs-12 container fluid news-square">
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12 col-xs-12">
-                <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+        <div class="container">
+            <div class = "news">
+                <h2> Aktualności </h2>
+                <div class = "news-square">
+                    <?php
+                        $conn = new mysqli('localhost', 'root', '', 'projekt');
+                        $sql = "SELECT * FROM aktualnosci";
+                         $result = $conn->query($sql);
+                        $row = $result->fetch_assoc();
+                        echo 
+                            "<h4>".$row["tytuł"]."</h4><img src='data:image/jpeg;base64,".base64_encode($row['obraz'])."' alt='aktualnosci'><b>".$row['krotki_opis']."</b><p>".$row['dlugi_opis']."</p>"
+                    ?>
+                </div>
             </div>
 
-            <div class = "col-md-offset-1 col-md-5 col-sm-offset-1 col-sm-10 col-xs-12 container fluid news-square">
-                <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-                <img src="jpg/kierownica.jpeg" alt="kierowca" class="col-md-12 col-xs-12">
-                <p class="col-md-12"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+            <!-- lewa strona -->
+
+            <div class = "info">
+                <h2> Aktualności </h2>
+                <img src="jpg/stop.jpeg" alt="al">
+                <img src="jpg/stop.jpeg" alt="al">
+                <img src="jpg/stop.jpeg" alt="al">
             </div>
+
+            <div class="visits"> <?php include "./licznik_odwiedzin.php" ?> </div>
         </div>
-    
-        <!-- lewa strona -->
-        
-        <div class = "info container-fluid">
-            <h2> Aktualności </h2>
-            <img src="jpg/stop.jpeg" class="col-md-10 col-xs-12" alt="al">
-            <img src="jpg/stop.jpeg" class="col-md-10 col-xs-12" alt="al">
-            <img src="jpg/stop.jpeg" class="col-md-10 col-xs-12" alt="al">
-        </div>
-        
-        <div class="container-fluid visits"> <?php include "./licznik_odwiedzin.php" ?> </div>
         
         <!-- prawa strona -->
 

@@ -1,0 +1,1 @@
+INSERT INTO `aktualnosci`( `tytuł`, `obraz`, `krotki_opis`, `dlugi_opis`, `poczatek_aktualnosci`, `koniec_aktualnosci`) VALUES ('Kursy chwilowo zawieszone',LOAD_FILE('C:/xampp/htdocs/jpg/srodek.jpeg'),'Przepraszamy za zaistniałą sytuacje','Postaramy się to jak najszybciej naprawić','2021-05-05','2021-05-09')

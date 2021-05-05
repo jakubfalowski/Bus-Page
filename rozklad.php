@@ -12,59 +12,87 @@
         <!-- górny pasek zakładek --> 
         
         <div class = "news container">
-            <h2 class="col-12-md center"> Aktualne przystanki </h2>
-            <img src="jpg/uklad_wspolrzednych.jpg" class="col-md-12 center" alt="plan">
-            <p class="col-md-12 center"> Do przystanków pozamiejskich zachodnich dojeżdża tylko autobus Nowicz zachodni, identycznie z wschodnim, południowym i północnym. </p>
-            <p id="xD"> e </p>
-            
+            <h2 class="center"> Aktualne przystanki </h2>
             <p>Wybierz przystanek początkowy i końcowy by obliczyć odległość pomiędzy powyższymi miejscami.</p>
+            <?php
+                $conn = new mysqli('localhost', 'root', '', 'projekt');
 
-            <form action="/action_page.php">
+                    if(isset($_POST['submit'])){
+                        $sql = "SELECT * FROM przystanek WHERE nazwa='".$_POST['przystanek_poczatkowy']."'";
+                        $result = $conn->query($sql);
+                        $row = $result->fetch_assoc();
+                        $startname = $row["nazwa"];
+                        $startX = $row["X"];
+                        $startY = $row["Y"];
+                        
+                        $sql2 = "SELECT * FROM przystanek WHERE nazwa='".$_POST['przystanek_koncowy']."'";
+                        $result2 = $conn->query($sql2);
+                        $row2 = $result2->fetch_assoc();
+                        $finishname = $row2["nazwa"];
+                        $finishX = $row2["X"];
+                        $finishY = $row2["Y"];
+                        $distance = round(sqrt(pow(($finishX-$startX),2)+pow(($finishY-$startY),2)),2);
+                        
+                       echo "Przystanek początkowy: ".$startname." X: ".$startX." Y: ".$startY."<br> Przystanek końcowy: ".$finishname." X: ".$finishX." Y: ".$finishY."<br>".$distance." km";
+                        
+                    }
+                    
+                
+            ?>
+
+            <form action="" method="post">
               <label for="przystanek_poczatkowy">Przystanek początkowy:</label>
               <select name="przystanek_poczatkowy" id="przystanek_poczatkowy">
-                <option value="nowicz_z">Nowicz zachodni</option>
-                <option value="szkolna">Szkolna</option>
-                <option value="spozywcza">Spożywcza</option>
-                <option value="rynek">Rynek</option>
-                <option value="nowicz_pln">Nowicz północny</option>
-                <option value="stadionowa">Stadionowa</option>
-                <option value="nowicz_w">Nowicz wschodni</option>
-                <option value="cmentarna">Cmentarna</option>
-                <option value="nowicz_pld">Nowicz południowy</option>
-                <option value="arakowice">Arakowice</option>
-                <option value="zawada">Zawada</option>
-                <option value="marakow">Maraków</option>
-                <option value="udanow">Udanów</option>
-                <option value="mala_wies">Mała Wieś</option>
-                <option value="duza_wies">Duża Wieś</option>
-                <option value="recka">Recka</option>
-                <option value="kebsice">Kebsice</option>
-                <option value="maflok">Maflok</option>
+                <option value="Nowicz Zachodni">Nowicz zachodni</option>
+                <option value="Szkolna">Szkolna</option>
+                <option value="Spożywcza">Spożywcza</option>
+                <option value="Rynek">Rynek</option>
+                <option value="Nowicz Północny">Nowicz północny</option>
+                <option value="Stadionowa">Stadionowa</option>
+                <option value="Nowicz Wschodni">Nowicz wschodni</option>
+                <option value="Cmentarna">Cmentarna</option>
+                <option value="Nowicz Południowy">Nowicz południowy</option>
+                <option value="Arakowice">Arakowice</option>
+                <option value="Zawada">Zawada</option>
+                <option value="Marakow">Maraków</option>
+                <option value="Udanow">Udanów</option>
+                <option value="Mała Wieś">Mała Wieś</option>
+                <option value="Duża Wieś">Duża Wieś</option>
+                <option value="Recko">Recka</option>
+                <option value="Kebsice">Kebsice</option>
+                <option value="Maflok">Maflok</option>
               </select>
             <label for="przystanek_koncowy">Przystanek końcowy:</label>
               <select name="przystanek_koncowy" id="przystanek_koncowy">
-                <option value="nowicz_z">Nowicz zachodni</option>
-                <option value="szkolna">Szkolna</option>
-                <option value="spozywcza">Spożywcza</option>
-                <option value="rynek">Rynek</option>
-                <option value="nowicz_pln">Nowicz północny</option>
-                <option value="stadionowa">Stadionowa</option>
-                <option value="nowicz_w">Nowicz wschodni</option>
-                <option value="cmentarna">Cmentarna</option>
-                <option value="nowicz_pld">Nowicz południowy</option>
-                <option value="arakowice">Arakowice</option>
-                <option value="zawada">Zawada</option>
-                <option value="marakow">Maraków</option>
-                <option value="udanow">Udanów</option>
-                <option value="mala_wies">Mała Wieś</option>
-                <option value="duza_wies">Duża Wieś</option>
-                <option value="recka">Recka</option>
-                <option value="kebsice">Kebsice</option>
-                <option value="maflok">Maflok</option>
+                <option value="Nowicz Zachodni">Nowicz zachodni</option>
+                <option value="Szkolna">Szkolna</option>
+                <option value="Spożywcza">Spożywcza</option>
+                <option value="Rynek">Rynek</option>
+                <option value="Nowicz Północny">Nowicz północny</option>
+                <option value="Stadionowa">Stadionowa</option>
+                <option value="Nowicz Wschodni">Nowicz wschodni</option>
+                <option value="Cmentarna">Cmentarna</option>
+                <option value="Nowicz Południowy">Nowicz południowy</option>
+                <option value="Arakowice">Arakowice</option>
+                <option value="Zawada">Zawada</option>
+                <option value="Marakow">Maraków</option>
+                <option value="Udanow">Udanów</option>
+                <option value="Mała Wieś">Mała Wieś</option>
+                <option value="Duża Wieś">Duża Wieś</option>
+                <option value="Recko">Recka</option>
+                <option value="Kebsice">Kebsice</option>
+                <option value="Maflok">Maflok</option>
               </select>
-              <input type="submit" value="Submit">
+              <input type="submit" name="submit" value="prześlij">
             </form>
-        
+            <?php
+                function pre_r($array){
+                    echo '<pre>';
+                    print_r($array);
+                    echo '</pre>';
+                }
+            ?>
+            <img src="jpg/uklad_wspolrzednych.jpg" class="col-md-12 center" alt="plan">
         <script>
             const nowicz_zachodni = [4,7];
             const szkolna = [6,6];
