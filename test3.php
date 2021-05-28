@@ -10,7 +10,6 @@ header('Content-Type: application/json');
 
 $con = mysqli_connect('localhost', 'root', '', 'projekt');
 $czas=date("H:i:s");
-$czas2 = date('H:i:s',strtotime('+3 hours',strtotime($czas)));
 
 if (mysqli_connect_errno($con))
 {
@@ -20,7 +19,7 @@ if (mysqli_connect_errno($con))
 else
 {
     $data_points = array();
-    $result = mysqli_query($con, "SELECT * FROM tabela_łącząca RIGHT JOIN przystanek ON tabela_łącząca.id_przystanku = przystanek.id_przystanku WHERE id_kursu = " . $kurs . " AND godzina_przyjazdu BETWEEN '".$czas."' AND '".$czas2."' ORDER BY godzina_przyjazdu ASC");
+    $result = mysqli_query($con, "SELECT * FROM tabela_łącząca RIGHT JOIN przystanek ON tabela_łącząca.id_przystanku = przystanek.id_przystanku WHERE id_kursu = " . $kurs . " AND godzina_przyjazdu >'".$czas."' GROUP BY id_kursu, przystanek.id_przystanku ORDER BY godzina_przyjazdu");
     
     while($row = mysqli_fetch_array($result))
     {        

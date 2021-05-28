@@ -46,9 +46,16 @@
                         <option value="4"> 4 </option>
                         <option value="5"> 5 </option>
                     </optgroup>
+                    <optgroup label="pozamiejskie">
+                        <option value="8"> 8 </option>
+                        <option value="9"> 9 </option>
+                        <option value="10"> 10 </option>
+                        <option value="11"> 11 </option>
+                        <option value="12"> 12 </option>
+                    </optgroup>
                 </select>
                 <input type="submit" name="submit">
-            </form>
+            </form> 
         <div id="chartContainer" style="height: 360px; width: 600px"></div>
 </div>
         <!-- górny pasek zakładek --> 
