@@ -58,7 +58,7 @@
             <h2 class="col-12-md center"> Bliski bus </h2>
             <?php 
                 $conn = new mysqli('localhost', 'root', '', 'projekt');
-                $sql = "SELECT * FROM kurs";
+                $sql = "SELECT * FROM kurs WHERE czy_aktualny = 1";
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()){
                     echo "<span class='box'>".$row['numer_kursu']."</span>";

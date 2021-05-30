@@ -66,7 +66,7 @@
             $data=date("Y-m-d");
             $czas=date("H:i");
 
-            echo "Stronę wyświetlono dnia $data o godzinie $czas";
+            echo "Stronę wyświetlono dnia ".$data." o godzinie ".$czas;
 
             ?>
         

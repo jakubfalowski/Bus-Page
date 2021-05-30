@@ -60,12 +60,21 @@
                 <h2> Aktualności </h2>
                 <div class = "news-square">
                     <?php
+                        $data=date("Y-m-d");
                         $conn = new mysqli('localhost', 'root', '', 'projekt');
-                        $sql = "SELECT * FROM aktualnosci";
-                         $result = $conn->query($sql);
-                        $row = $result->fetch_assoc();
+        
+                        $sql1 = "UPDATE kurs INNER JOIN aktualnosci ON kurs.id_aktualnosci = aktualnosci.id_aktualnosci SET czy_aktualny = 0 WHERE poczatek_aktualnosci < '".$data."' AND koniec_aktualnosci > '".$data."'";
+                        $result1 = $conn->query($sql1);
+
+                        $sql2 = "UPDATE kurs INNER JOIN aktualnosci ON kurs.id_aktualnosci = aktualnosci.id_aktualnosci SET czy_aktualny = 1 WHERE koniec_aktualnosci < '".$data."'";
+                        $result2 = $conn->query($sql2);
+        
+                        $sql3 = "SELECT * FROM aktualnosci WHERE poczatek_aktualnosci < '".$data."' AND koniec_aktualnosci > '".$data."'";
+                        $result3 = $conn->query($sql3);
+                        while($row3 = $result3->fetch_assoc()){
                         echo 
-                            "<h4>".$row["tytuł"]."</h4><img src='data:image/jpeg;base64,".base64_encode($row['obraz'])."' alt='aktualnosci'><b>".$row['krotki_opis']."</b><p>".$row['dlugi_opis']."</p>"
+                            "<h4>".$row3["tytuł"]."</h4><img src='data:image/jpeg;base64,".base64_encode($row3['obraz'])."' alt='aktualnosci'><b>".$row3['krotki_opis']."</b><p>".$row3['dlugi_opis']."</p>";
+                        }
                     ?>
                 </div>
             </div>
@@ -74,9 +83,9 @@
 
             <div class = "info">
                 <h2> Aktualności </h2>
-                <img src="jpg/stop.jpeg" alt="al">
-                <img src="jpg/stop.jpeg" alt="al">
-                <img src="jpg/stop.jpeg" alt="al">
+                <img src="jpg/1.PNG" alt="al">
+                <img src="jpg/2.png" alt="al">
+                <img src="jpg/3.png" alt="al">
             </div>
 
             <div class="visits"> <?php include "./licznik_odwiedzin.php" ?> </div>
@@ -89,3 +98,6 @@
         <script src="ruchbanera.js"></script>
     </body>
 </html>
+
+
+    
