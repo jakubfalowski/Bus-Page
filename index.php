@@ -60,15 +60,8 @@
                 <h2> Aktualności </h2>
                 <div class = "news-square">
                     <?php
-                        $data=date("Y-m-d");
                         $conn = new mysqli('localhost', 'root', '', 'projekt');
-        
-                        $sql1 = "UPDATE kurs INNER JOIN aktualnosci ON kurs.id_aktualnosci = aktualnosci.id_aktualnosci SET czy_aktualny = 0 WHERE poczatek_aktualnosci < '".$data."' AND koniec_aktualnosci > '".$data."'";
-                        $result1 = $conn->query($sql1);
-
-                        $sql2 = "UPDATE kurs INNER JOIN aktualnosci ON kurs.id_aktualnosci = aktualnosci.id_aktualnosci SET czy_aktualny = 1 WHERE koniec_aktualnosci < '".$data."'";
-                        $result2 = $conn->query($sql2);
-        
+                        $data=date("Y-m-d");
                         $sql3 = "SELECT * FROM aktualnosci WHERE poczatek_aktualnosci < '".$data."' AND koniec_aktualnosci > '".$data."'";
                         $result3 = $conn->query($sql3);
                         while($row3 = $result3->fetch_assoc()){
@@ -98,6 +91,3 @@
         <script src="ruchbanera.js"></script>
     </body>
 </html>
-
-
-    

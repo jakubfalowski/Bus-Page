@@ -18,7 +18,7 @@
                 $conn = new mysqli('localhost', 'root', '', 'projekt');
 
                     if(isset($_POST['submit'])){
-                        $sql = "SELECT ROUND(SQRT(POW((SELECT X FROM przystanek WHERE nazwa='".$_POST['przystanek_koncowy']."')-(SELECT X FROM przystanek WHERE nazwa='".$_POST['przystanek_poczatkowy']."'),2)+POW((SELECT Y FROM przystanek WHERE nazwa='".$_POST['przystanek_koncowy']."')-(SELECT Y FROM przystanek WHERE nazwa='".$_POST['przystanek_poczatkowy']."'),2)),2) AS wynik";
+                        $sql = "CALL odleglosc_przystankow('".$_POST['przystanek_poczatkowy']."','".$_POST['przystanek_koncowy']."')";
                         $result = $conn->query($sql);
                         $row = $result->fetch_assoc();
                         $wynik = $row["wynik"];

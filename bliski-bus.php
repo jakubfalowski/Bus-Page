@@ -37,6 +37,21 @@
     <body>
         <?php include "./mainbar.html" ?>
         <div class = "news container">
+            <form action="test3.php" method="post">
+              <label for="kurs">Kurs:</label>
+              <select name="nr_kursu" id="kurs">
+                <?php
+                    $conn = new mysqli('localhost', 'root', '', 'projekt');
+                    $sql = "SELECT * FROM kurs WHERE czy_aktualny = 1";
+                    $result = $conn->query($sql);
+                    while($row = $result->fetch_assoc()){
+                        echo "<option value='".$row['id_kursu']."'>".$row['numer_kursu']."</option>";
+                    }
+                  ?>
+              </select>
+              <input type="submit" name="submit1" value="prześlij">
+            </form>
+<!--
             <form method="post" action="test3.php">
                 <select name="nr_kursu">
                     <optgroup label="miejskie">
@@ -56,6 +71,7 @@
                 </select>
                 <input type="submit" name="submit">
             </form> 
+-->
         <div id="chartContainer" style="height: 360px; width: 600px"></div>
 </div>
         <!-- górny pasek zakładek --> 

@@ -6,6 +6,13 @@
         <link rel="stylesheet" href="boostrap/bootstrap.css">
         <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/e695157fcf.js" crossorigin="anonymous"></script>
+        <style>
+            table,th,td{
+                padding: 10px;
+                border: 1px solid black;
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
         <?php include "./mainbar.html" ?>
@@ -20,7 +27,7 @@
               <select name="kurs" id="kurs">
                 <?php
                     $conn = new mysqli('localhost', 'root', '', 'projekt');
-                    $sql = "SELECT * FROM kurs";
+                    $sql = "SELECT * FROM kurs WHERE czy_aktualny = 1";
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
                         echo "<option value='".$row['id_kursu']."'>".$row['numer_kursu']."</option>";
@@ -45,28 +52,66 @@
                             echo "<option value='".$row['nazwa']."'>".$row['nazwa']."</option>";
                         }    
                         echo "</select><label for='kurs'>Kurs:</label>
-                            <select name='kurs' id='kurs'><option value='".$_POST['kurs']."'>".$_POST['kurs']."</option></select><input type='submit' name='submit2' value='prześlij'></form>";
+                            <select name='kurs' id='kurs'><option value='".$_POST['kurs']."'>".$_POST['kurs']."</option></select><input type='submit' name='submit2' value='kup bilet dzienny'><input type='submit' name='submit3' value='kup bilet miesięczny'></form>";
                     }
                     
-                    if(isset($_POST['submit2'])){
+                    if(isset($_POST['submit2']) || isset($_POST['submit3'])){
                         echo "Kupiłeś bilet pomiędzy: ".$_POST['miasto1']." a ".$_POST['miasto2'];
-                        $sql3 = "SELECT ROUND(SQRT(POW((SELECT X FROM przystanek WHERE nazwa='".$_POST['miasto2']."')-(SELECT X FROM przystanek WHERE nazwa='".$_POST['miasto1']."'),2)+POW((SELECT Y FROM przystanek WHERE nazwa='".$_POST['miasto2']."')-(SELECT Y FROM przystanek WHERE nazwa='".$_POST['miasto1']."'),2)),2) AS wynik";
+                        $sql3 = "CALL odleglosc_przystankow('".$_POST['miasto1']."','".$_POST['miasto2']."')";
                         $result3 = $conn->query($sql3);
                         while($row3 = $result3->fetch_assoc()){
                             $odleglosc = $row3['wynik'];
                             echo " Odległość wynosi: ".$odleglosc." kilometrów. ";
                         }
+                    
+                        ?>
+                    <?php
+                        $conn = new mysqli('localhost', 'root', '', 'projekt');
                         $sql4 = "SELECT `rodzaj(miejski)` FROM `tabela_łącząca` INNER JOIN kurs ON tabela_łącząca.id_kursu = kurs.id_kursu INNER JOIN przystanek ON tabela_łącząca.id_przystanku = przystanek.id_przystanku WHERE nazwa = '".$_POST['miasto2']."'";
                         $result4 = $conn->query($sql4);
                         $row4 = $result4->fetch_assoc();
                         $rodzaj = $row4['rodzaj(miejski)'];
-                        if($rodzaj == 'miejski') $cena = $odleglosc * 0.5;
+                        if($rodzaj == 'miejski') $cena = ROUND($odleglosc * 0.5,2);
                         else $cena = $odleglosc * 1;
                         echo "Cena to: ".$cena." złotych.";
-                        $sql5 = "INSERT INTO `bilet`(`id_przystanku_poczatkowego`, `id_przystanku_koncowego`, `id_kursu`, `odleglosc`, `cena`) VALUES ((SELECT id_przystanku FROM przystanek WHERE nazwa = '".$_POST['miasto1']."'),(SELECT id_przystanku FROM przystanek WHERE nazwa = '".$_POST['miasto2']."'),".$_POST['kurs'].",".$odleglosc.",".$cena.")";
-                        $result5 = $conn->query($sql5);
-
                     }
+                    if(isset($_POST['submit2'])){
+                        $sql5 = " CALL dodaj_bilet('".$_POST['miasto1']."','".$_POST['miasto2']."',".$_POST['kurs'].",".$odleglosc.",".$cena.")";
+                        $result5 = $conn->query($sql5);
+                    
+                        }
+                    if(isset($_POST['submit3'])){
+                        $sql30="SET GLOBAL event_scheduler='ON';";
+                         mysqli_query($conn,$sql30) or die (mysqli_error($conn));
+                        
+                        $start = date("Y-m-d");
+                        $teraz = strtotime(date("Y-m-d"));
+                        $final = date("Y-m-d", strtotime("+1 month", $teraz));
+                        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                        $charactersLength = strlen($characters);
+                        $randomString = '';
+                        for ($i = 0; $i < 8; $i++) {
+                            $randomString .= $characters[rand(0, $charactersLength - 1)];
+                        }
+                        $sql20 = "
+                        CREATE DEFINER=`root`@`localhost` EVENT `".$randomString."` ON SCHEDULE EVERY 1 DAY STARTS 
+                        '".$start." 00:00:01'ENDS '".$final." 00:00:01' 
+                        ON COMPLETION NOT PRESERVE ENABLE 
+                        DO BEGIN 
+                       CALL dodaj_bilet('".$_POST['miasto1']."','".$_POST['miasto2']."',".$_POST['kurs'].",".$odleglosc.",".$cena."); END";
+                        mysqli_query($conn,$sql20) or die (mysqli_error($conn));
+                        echo "<p> Twój kod do biletu miesięcznego: <b>".$randomString. "</b></p>";
+                        
+                    }
+                        
+                    $sql10 = " SELECT * FROM `bilety_na_kurs`";
+                    $result10 = $conn->query($sql10);
+                    echo "<table><tr><th> ID kursu </th><th> Ilość sprzedanych biletów </th> </tr>";
+                    while($row10 = $result10->fetch_assoc()){
+                        echo "<tr><td>".$row10['id_kursu']."</td><td>".$row10['ilosc_sprzedanych_biletow']."</td></tr>";
+                    }
+                    echo "</table>";
+                    
                 
             ?>
         </div>

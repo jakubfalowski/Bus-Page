@@ -55,118 +55,29 @@
         <!-- górny pasek zakładek --> 
         
         <div class = "news container">
-            <h2 class="col-12-md center"> Bliski bus </h2>
+            <h2 class="col-12-md center"> Rozkład </h2>
             <?php 
+                $data=date("Y-m-d");
                 $conn = new mysqli('localhost', 'root', '', 'projekt');
+                $sql22 = "CALL wylacz_aktualnosc('".$data."');";
+                mysqli_query($conn,$sql22) or die (mysqli_error($conn));
+
+                $sql23 = "CALL wlacz_aktualnosc('".$data."');";
+                mysqli_query($conn,$sql23) or die (mysqli_error($conn));
+                
                 $sql = "SELECT * FROM kurs WHERE czy_aktualny = 1";
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()){
-                    echo "<span class='box'>".$row['numer_kursu']."</span>";
+                    echo "<span class='box'>".$row['numer_kursu']."</span>";   
+                    $sql1 = "SELECT * FROM przystanek INNER JOIN tabela_łącząca ON przystanek.id_przystanku = tabela_łącząca.id_przystanku WHERE id_kursu = ".$row['id_kursu']." ORDER BY `tabela_łącząca`.`id_połączenia` ASC; ";
+                    $result1 = $conn->query($sql1);
+                    echo "<div class='tabela'><h3> Kurs nr. ".$row['numer_kursu']."</h3><table>";
+                    while($row1 = $result1->fetch_assoc()){
+                        if($row1['godzina_wyjazdu'] == '' ) echo "</table><table>";
+                        else echo "<tr><td> ".$row1['nazwa']."</td><td> ".$row1['godzina_przyjazdu']."</td><td> ".$row1['godzina_wyjazdu']."</td></tr>";
+                    }    
+                    echo "</table></div>";
                 }    
-
-                $sql1 = "SELECT * FROM przystanek INNER JOIN tabela_łącząca ON przystanek.id_przystanku = tabela_łącząca.id_przystanku WHERE id_kursu = 1 ORDER BY `tabela_łącząca`.`id_połączenia` ASC ";
-                $result1 = $conn->query($sql1);
-                echo "<div class='tabela'><h3> Kurs nr. 1</h3><table>";
-                while($row1 = $result1->fetch_assoc()){
-                    if($row1['godzina_wyjazdu'] == '' ) echo "</table><table>";
-                    else echo "<tr><td> ".$row1['nazwa']."</td><td> ".$row1['godzina_przyjazdu']."</td><td> ".$row1['godzina_wyjazdu']."</td></tr>";
-                }    
-                echo "</table></div>";
-        
-                $sql2 = "SELECT * FROM przystanek INNER JOIN tabela_łącząca ON przystanek.id_przystanku = tabela_łącząca.id_przystanku WHERE id_kursu = 2 ORDER BY `tabela_łącząca`.`id_połączenia` ASC ";
-                $result2 = $conn->query($sql2);
-                echo "<div class='tabela'><h3> Kurs nr. 2</h3><table>";
-                while($row2 = $result2->fetch_assoc()){
-                    if($row2['godzina_wyjazdu'] == '' ) echo "</table><table>";
-                    else echo "<tr><td> ".$row2['nazwa']."</td><td> ".$row2['godzina_przyjazdu']."</td><td> ".$row2['godzina_wyjazdu']."</td></tr>";
-                    
-                }    
-                echo "</table></div>";
-                    
-                $sql3 = "SELECT * FROM przystanek INNER JOIN tabela_łącząca ON przystanek.id_przystanku = tabela_łącząca.id_przystanku WHERE id_kursu = 3 ORDER BY `tabela_łącząca`.`id_połączenia` ASC ";
-                $result3 = $conn->query($sql3);
-                echo "<div class='tabela'><h3> Kurs nr. 3</h3><table>";
-                while($row3 = $result3->fetch_assoc()){
-                    if($row3['godzina_wyjazdu'] == '' ) echo "</table><table>";
-                    else echo "<tr><td> ".$row3['nazwa']."</td><td> ".$row3['godzina_przyjazdu']."</td><td> ".$row3['godzina_wyjazdu']."</td></tr>";
-                    
-                }    
-                echo "</table></div>";
-                    
-                $sql4 = "SELECT * FROM przystanek INNER JOIN tabela_łącząca ON przystanek.id_przystanku = tabela_łącząca.id_przystanku WHERE id_kursu = 4 ORDER BY `tabela_łącząca`.`id_połączenia` ASC ";
-                $result4 = $conn->query($sql4);
-                echo "<div class='tabela'><h3> Kurs nr. 4</h3><table>";
-                while($row4 = $result4->fetch_assoc()){
-                    if($row4['godzina_wyjazdu'] == '' ) echo "</table><table>";
-                    else echo "<tr><td> ".$row4['nazwa']."</td><td> ".$row4['godzina_przyjazdu']."</td><td> ".$row4['godzina_wyjazdu']."</td></tr>";
-                    
-                }    
-                echo "</table></div>";
-                    
-                $sql5 = "SELECT * FROM przystanek INNER JOIN tabela_łącząca ON przystanek.id_przystanku = tabela_łącząca.id_przystanku WHERE id_kursu = 5 ORDER BY `tabela_łącząca`.`id_połączenia` ASC ";
-                $result5 = $conn->query($sql5);
-                echo "<div class='tabela'><h3> Kurs nr. 5</h3><table>";
-                while($row5 = $result5->fetch_assoc()){
-                    if($row5['godzina_wyjazdu'] == '' ) echo "</table><table>";
-                    else echo "<tr><td> ".$row5['nazwa']."</td><td> ".$row5['godzina_przyjazdu']."</td><td> ".$row5['godzina_wyjazdu']."</td></tr>";
-                    
-                }    
-                echo "</table></div>";
-        
-                $sql6 = "SELECT * FROM przystanek INNER JOIN tabela_łącząca ON przystanek.id_przystanku = tabela_łącząca.id_przystanku WHERE id_kursu = 6 ORDER BY `tabela_łącząca`.`id_połączenia` ASC ";
-                $result6 = $conn->query($sql6);
-                echo "<div class='tabela'><h3> Kurs nr. 6</h3><table>";
-                while($row6 = $result6->fetch_assoc()){
-                    if($row6['godzina_wyjazdu'] == '' ) echo "</table><table>";
-                    else echo "<tr><td> ".$row6['nazwa']."</td><td> ".$row6['godzina_przyjazdu']."</td><td> ".$row6['godzina_wyjazdu']."</td></tr>";
-                }    
-                echo "</table></div>";
-        
-                $sql50 = "SELECT * FROM przystanek INNER JOIN tabela_łącząca ON przystanek.id_przystanku = tabela_łącząca.id_przystanku WHERE id_kursu = 8 ORDER BY `tabela_łącząca`.`id_połączenia` ASC ";
-                $result50 = $conn->query($sql50);
-                echo "<div class='tabela'><h3> Kurs nr. 50</h3><table>";
-                while($row50 = $result50->fetch_assoc()){
-                    if($row50['godzina_wyjazdu'] == '' ) echo "</table><table>";
-                    else echo "<tr><td> ".$row50['nazwa']."</td><td> ".$row50['godzina_przyjazdu']."</td><td> ".$row50['godzina_wyjazdu']."</td></tr>";
-                }    
-                echo "</table></div>";
-        
-                $sql51 = "SELECT * FROM przystanek INNER JOIN tabela_łącząca ON przystanek.id_przystanku = tabela_łącząca.id_przystanku WHERE id_kursu = 9 ORDER BY `tabela_łącząca`.`id_połączenia` ASC ";
-                $result51 = $conn->query($sql51);
-                echo "<div class='tabela'><h3> Kurs nr. 51</h3><table>";
-                while($row51 = $result51->fetch_assoc()){
-                    if($row51['godzina_wyjazdu'] == '' ) echo "</table><table>";
-                    else echo "<tr><td> ".$row51['nazwa']."</td><td> ".$row51['godzina_przyjazdu']."</td><td> ".$row51['godzina_wyjazdu']."</td></tr>";
-                }    
-                echo "</table></div>";
-        
-                $sql52 = "SELECT * FROM przystanek INNER JOIN tabela_łącząca ON przystanek.id_przystanku = tabela_łącząca.id_przystanku WHERE id_kursu = 10 ORDER BY `tabela_łącząca`.`id_połączenia` ASC ";
-                $result52 = $conn->query($sql52);
-                echo "<div class='tabela'><h3> Kurs nr. 52</h3><table>";
-                while($row52 = $result52->fetch_assoc()){
-                    if($row52['godzina_wyjazdu'] == '' ) echo "</table><table>";
-                    else echo "<tr><td> ".$row52['nazwa']."</td><td> ".$row52['godzina_przyjazdu']."</td><td> ".$row52['godzina_wyjazdu']."</td></tr>";
-                }    
-                echo "</table></div>";
-        
-                $sql53 = "SELECT * FROM przystanek INNER JOIN tabela_łącząca ON przystanek.id_przystanku = tabela_łącząca.id_przystanku WHERE id_kursu = 11 ORDER BY `tabela_łącząca`.`id_połączenia` ASC ";
-                $result53 = $conn->query($sql53);
-                echo "<div class='tabela'><h3> Kurs nr. 53</h3><table>";
-                while($row53 = $result53->fetch_assoc()){
-                    if($row53['godzina_wyjazdu'] == '' ) echo "</table><table>";
-                    else echo "<tr><td> ".$row53['nazwa']."</td><td> ".$row53['godzina_przyjazdu']."</td><td> ".$row53['godzina_wyjazdu']."</td></tr>";
-                }    
-                echo "</table></div>";
-        
-                $sql54 = "SELECT * FROM przystanek INNER JOIN tabela_łącząca ON przystanek.id_przystanku = tabela_łącząca.id_przystanku WHERE id_kursu = 12 ORDER BY `tabela_łącząca`.`id_połączenia` ASC ";
-                $result54 = $conn->query($sql54);
-                echo "<div class='tabela'><h3> Kurs nr. 54</h3><table>";
-                while($row54 = $result54->fetch_assoc()){
-                    if($row54['godzina_wyjazdu'] == '' ) echo "</table><table>";
-                    else echo "<tr><td> ".$row54['nazwa']."</td><td> ".$row54['godzina_przyjazdu']."</td><td> ".$row54['godzina_wyjazdu']."</td></tr>";
-                }    
-                echo "</table></div>";
-
             ?>
         </div>
 
